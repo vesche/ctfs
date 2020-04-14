@@ -1,0 +1,20 @@
+user@xps ~/c/dawgctf> ltrace -s 50 ./missyelliott 
+puts("Let me search ya."Let me search ya.
+)                                       = 18
+fgets(AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+"AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA", 44, 0x7fcbdb1857e0) = 0x55a2bc271040
+strnlen(0x55a2bc271040, 43, 0, 0)                               = 43
+strncmp("}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}", "A\365Q\321Ma\325\351i\211\031\335\t\021\211\313\235\311i\361m\321}\211\331\265Y\221Y\2611Ym\321\213!\235\325=\031\021y\335", 44) = 60
+puts("Wrong. You need to work it."Wrong. You need to work it.
+)                             = 28
++++ exited (status 0) +++
+
+user@xps ~/c/dawgctf> echo -e "A\365Q\321Ma\325\351i\211\031\335\t\021\211\313\235\311i\361m\321}\211\331\265Y\221Y\2611Ym\321\213!\235\325=\031\021y\335" | ltrace -s 50 ./missyelliott
+puts("Let me search ya."Let me search ya.
+)                                       = 18
+fgets("A\365Q\321Ma\325\351i\211\031\335\t\021\211\313\235\311i\361m\321}\211\331\265Y\221Y\2611Ym\321\213!\235\325=\031\021y\335", 44, 0x7f8df4fa17e0) = 0x55d5a13a7040
+strnlen(0x55d5a13a7040, 43, 0, 0)                               = 43
+strncmp("DawgCTF{.tIesreveRdnAtIpilF,nwoDgnihTyMtuP}", "A\365Q\321Ma\325\351i\211\031\335\t\021\211\313\235\311i\361m\321}\211\331\265Y\221Y\2611Ym\321\213!\235\325=\031\021y\335", 44) = 3
+puts("Wrong. You need to work it."Wrong. You need to work it.
+)                             = 28
++++ exited (status 0) +++

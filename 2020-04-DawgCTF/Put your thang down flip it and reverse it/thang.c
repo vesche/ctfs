@@ -1,0 +1,39 @@
+#include <stdio.h>
+
+int main(void) {
+    char string[43] = {0x41, 0xf5, 0x51, 0xd1, 0x4d, 0x61, 0xd5, 0xe9, 0x69, 0x89, 0x19, 0xdd, 0x09, 0x11, 0x89, 0xcb, 0x9d, 0xc9, 0x69, 0xf1, 0x6d, 0xd1, 0x7d, 0x89, 0xd9, 0xb5, 0x59, 0x91, 0x59, 0xb1, 0x31, 0x59, 0x6d, 0xd1, 0x8b, 0x21, 0x9d, 0xd5, 0x3d, 0x19, 0x11, 0x79, 0xdd};
+    
+    int i;
+    int j;
+    char c;
+
+    for (i = 0; i < 0x2b; i++) {
+        j = 0;
+        while (j < 8) {
+            if ((1 << j & 0x1f) && string[i] != 0) {
+                c = c || (1 << (7 - j & 0x1f));
+            }
+            c = (1 << (7 - j & 0x1f))
+            j += 1;
+        }
+        string[i] = c;
+    }
+
+    //printf("%s\n", string);
+
+    int a;
+    char v;
+    for (a = 0; a < 0x15; a++) {
+        v = string[a];
+        string[a] = string[0x2a - a];
+        string[0x2a - a] = v;
+    }
+
+    //printf("%s\n", string);
+
+    for (int x=0;x < 44;x++) {
+        printf("%x\n",string[x]);
+    }
+
+    return 0;
+}
