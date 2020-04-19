@@ -110,7 +110,7 @@ Reading decompliation can be messy & tricky, but let's break it down:
 * Inside the first loop, `fgetc` is used to read the characters from `flag.gif`. **These plaintext characters are then XOR'd with the random characters that were created in `local_78`!** I put a star next to this because it's very important! This XOR'd data is stored in array `local_88`. This is the encrypted data.
 * The `flag.gif` is deleted.
 * A new file `flag-gif.EnCiPhErEd` is created.
-* A final loop is conducted to now write this encryted data to the encrypted file. This is done by looping over the array `local_88` and writing it to the file using `fputc`.
+* A final loop is conducted to now write this encrypted data to the encrypted file. This is done by looping over the array `local_88` and writing it to the file using `fputc`.
 
 Phew! Ok, we now understand the important parts of what this ransomware is doing. So how do we get our flag back? Since we know the random seed, we can create the same random data this ransomware is creating and then reverse the XOR operation. Let's write some C to generate the same random characters:
 
@@ -165,7 +165,7 @@ Now, I'm going to write some python to take these random characters and XOR them
 
 # read in the encrypted gif
 with open('flag-gif.EnCiPhErEd', 'rb') as f:
-    encryted_bytes = [i for i in f.read()]
+    encrypted_bytes = [i for i in f.read()]
 
 # read in the srand numbers we generated in C
 with open('srand_bytes.txt', 'r') as f:
@@ -173,13 +173,12 @@ with open('srand_bytes.txt', 'r') as f:
 
 # XOR the encrypted bytes and the srand_bytes
 gif = []
-for a, b in zip(encryted_bytes, srand_bytes):
+for a, b in zip(encrypted_bytes, srand_bytes):
     gif.append(a ^ b)
 
 # write the XOR'd data
 with open('flag.gif', 'wb') as f:
-    b = bytearray(gif)
-    f.write(b)
+    f.write(bytearray(gif))
 ```
 
 Let's cross our fingers and run our python script:
