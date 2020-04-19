@@ -4,7 +4,7 @@ This was the C code you interact with over nc:
 
 ![scrot](scrot.png)
 
-I found out you the address given back is a magic gadget, so no need to subtract anything...
+I found out the address given back is a magic gadget, so you don't need to subtract anything...
 
 Python 2:
 
