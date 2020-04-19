@@ -106,7 +106,7 @@ This still hasn't done any encryption, but it has created a random character arr
 
 ![scrot6](scrots/scrot6.png)
 
-Reading decompliation can be messy & tricky, but let's break it down:
+Reading decompilation can be messy & tricky, but let's break it down:
 * Inside the first loop, `fgetc` is used to read the characters from `flag.gif`. **These plaintext characters are then XOR'd with the random characters that were created in `local_78`!** I put a star next to this because it's very important! This XOR'd data is stored in array `local_88`. This is the encrypted data.
 * The `flag.gif` is deleted.
 * A new file `flag-gif.EnCiPhErEd` is created.
@@ -154,7 +154,7 @@ $ cat srand_bytes.txt
 213 162 91 212 53 154 186 76 249 139 182 131 3 206 89 207 ...
 ```
 
-Now, I'm going to write some python to take these random characters and XOR them against the bytes of the encrypted file, which should unencrypt the flag.gif!
+Now, I'm going to write some python to take these random characters and XOR them against the bytes of the encrypted file, which should decrypt the flag.gif!
 
 ```python
 #!/usr/bin/env python
@@ -195,4 +195,4 @@ Hell, yes!
 
 It's a bit hard to see, but the flag is: `WPI{It_always_feels_a_little_weird_writing_malware}`
 
-This was a great RE challenge, I really enjoyed it. Unil next time, ~vesche
+This was a great RE challenge, I really enjoyed it. Until next time, ~vesche
