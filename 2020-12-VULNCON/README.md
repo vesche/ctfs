@@ -38,7 +38,7 @@ Index  URL                                                                      
      1 http://google.com/                                                               Google                                                                                1     1 2020-12-12 13:41:40.947451        N/A
 ```
 
-Flag: `vulncon{gamblingsites-12-12-2020}`
+Flag: `vulncon{gamblingsites.org-12-12-2020}`
 
 ## Memory Forensics 2: USB Device
 
